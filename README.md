@@ -23,3 +23,7 @@ Connect the catalog, variants, availability, authentication, checkout, wishlist 
 ## Reference
 
 Brand colors: ink #0b0c0d, ivory #f7f5f0, sand #e9e5dc. Typography: system sans, bold condensed display styling. Do not use the single collage as image assets.
+
+## Public Xonbay catalogue integration
+
+Set `XONBAY_SHOP_SUBDOMAIN` to the real NQARO shop subdomain in your deployment environment. `XONBAY_API_URL` defaults to `https://api.xonbay.com`. The `/shop` page then reads the public storefront endpoint `/v1/storefront/shops/:subdomain/products` server-side (2-minute revalidation). With no subdomain configured the shop displays preview products; on a configured-shop API error it shows an unavailable state instead of advertising incorrect stock. The shopping bag remains demo-only and **checkout is disabled** until variant, stock and PaymentIntent integration is completed. No API tokens or secrets should be exposed through `NEXT_PUBLIC_` variables.
