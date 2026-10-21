@@ -105,3 +105,48 @@
  .hero-values svg{width:22px;height:22px}
 }
 @media(prefers-reduced-motion:reduce){.hero .light-btn{transition:none}.hero .light-btn:hover{transform:none}}
+
+
+/* NQARO Drop 001 — new editorial home sections */
+.home-manifesto{background:#e9e4db;color:#101110;min-height:450px;display:flex;align-items:center;justify-content:center;padding:85px 24px;text-align:center}
+.home-manifesto-inner{max-width:900px;margin:auto}
+.home-manifesto h2{font-family:Impact,"Arial Narrow",Arial,sans-serif;font-size:clamp(68px,10vw,140px);line-height:.86;letter-spacing:-.035em;margin:30px 0 24px}
+.home-manifesto p{font-size:clamp(14px,1.5vw,19px);line-height:1.6;max-width:560px;margin:0 auto 18px}
+.home-manifesto .text-link{margin:auto;border-bottom:1px solid currentColor}
+.home-categories,.new-arrivals{padding-top:75px;padding-bottom:72px}
+.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.category-card{min-width:0;position:relative;text-align:left;background:#e8e3da;overflow:hidden}
+.category-card img{width:100%;aspect-ratio:1.05;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.category-card:hover img{transform:scale(1.055)}
+.category-card>span{display:flex;justify-content:space-between;align-items:center;padding:21px 22px;font-size:clamp(13px,1.3vw,19px);font-weight:900;letter-spacing:.025em}
+.new-arrivals .product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.home-quote-banner{min-height:440px;background:#141717;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 24px;position:relative;overflow:hidden}
+.home-quote-banner:before{content:"NQARO";position:absolute;font:900 clamp(140px,29vw,480px)/1 Impact,Arial,sans-serif;letter-spacing:-.06em;color:#ffffff08;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap}
+.home-quote-inner{position:relative;z-index:1}
+.home-quote-banner h2{font-size:clamp(43px,6vw,90px);font-weight:950;line-height:.96;letter-spacing:-.055em;margin:25px 0}
+.home-quote-banner h2 em{font-style:normal;color:#c5b7a0}
+.home-quote-banner p{font-size:16px;color:#ddd;margin-bottom:26px}
+.home-closing{min-height:370px;background:#e6dfd3;display:flex;justify-content:space-between;align-items:center;gap:40px;padding:70px max(var(--content-gutter),calc((100vw - var(--content-width))/2));overflow:hidden}
+.home-closing h2{font-family:Impact,"Arial Narrow",Arial,sans-serif;font-size:clamp(43px,5.6vw,85px);letter-spacing:-.025em;line-height:.95;margin:17px 0}
+.home-closing p{margin:0 0 22px;color:#53504c}
+.closing-mark{font:900 clamp(75px,12vw,200px)/1 Impact,Arial,sans-serif;letter-spacing:-.08em;color:#b5a897}
+@media(max-width:640px){
+.home-manifesto{min-height:350px;padding:68px 20px}.home-manifesto h2{font-size:clamp(58px,12vw,85px);margin:22px 0}
+.home-categories,.new-arrivals{padding-top:43px;padding-bottom:45px}
+.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.category-card:last-child{grid-column:1/-1}
+.category-card:last-child img{aspect-ratio:2.1;object-fit:contain}
+.category-card>span{padding:13px;font-size:12px}
+.new-arrivals .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 10px}
+.home-quote-banner{min-height:365px;padding:65px 18px}
+.home-quote-banner h2{font-size:clamp(36px,9.8vw,56px)}
+.home-closing{min-height:330px;padding:55px 20px}
+.home-closing h2{font-size:53px}
+.closing-mark{display:none}
+}
+@media(prefers-reduced-motion:no-preference){
+.home-manifesto h2,.home-quote-banner h2{animation:nqaro-reveal .75s both}
+.category-card:focus-visible img{transform:scale(1.035)}
+}
+@keyframes nqaro-reveal{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.category-card img{transition:none}.category-card:hover img{transform:none}}
