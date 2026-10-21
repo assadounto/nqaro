@@ -37,3 +37,41 @@
 .detail-thumbs button img{width:67px;height:78px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.editorial-tile img,.product-photo img{transition:none}}
+
+
+/* Full-bleed editorial / centered content layout */
+:root{--content-width:1320px;--content-gutter:clamp(18px,4vw,56px)}
+.site-header{width:100%;padding:0;position:sticky;top:0;z-index:60;background:#080b0d}
+.site-header .header-inner{width:100%;max-width:calc(var(--content-width) + 2 * var(--content-gutter));margin:0 auto;padding:0 var(--content-gutter);height:100%;display:flex;align-items:center;justify-content:space-between}
+.site-header .header-inner>a{font-size:31px;flex:1}
+.site-header .header-actions{flex:1}
+.site-header .nav{flex:2}
+.hero,.shop-banner,.story-cover{width:100%;max-width:none;margin:0}
+.hero{padding-inline:max(var(--content-gutter),calc((100vw - var(--content-width))/2));}
+.content-section,.detail-wrap{width:100%;max-width:calc(var(--content-width) + 2 * var(--content-gutter));padding-left:var(--content-gutter);padding-right:var(--content-gutter);margin-left:auto;margin-right:auto}
+.footer-top,.footer-bottom{width:100%;max-width:var(--content-width);margin-inline:auto}
+.story-quality{width:100%}
+.story-split{padding-left:max(var(--content-gutter),calc((100vw - var(--content-width))/2));}
+.quality-panel{padding-right:max(var(--content-gutter),calc((100vw - var(--content-width))/2));}
+@media(min-width:1600px){
+ .hero{min-height:740px}
+ .editorial-tile{aspect-ratio: .95}
+ .story-quality{min-height:380px}
+}
+@media(max-width:900px){
+ .site-header .header-inner{padding-inline:20px}
+ .site-header .header-inner>a{font-size:26px}
+ .hero{padding-inline:var(--content-gutter)}
+}
+@media(max-width:640px){
+ :root{--content-gutter:16px}
+ .site-header .header-inner{padding-inline:20px}
+ .site-header .header-inner>a{font-size:27px}
+ .site-header .nav{position:absolute;top:62px;left:0;right:0}
+ .site-header .header-actions{flex:unset}
+ .hero{padding:65px 22px 20px}
+ .content-section{padding-left:16px;padding-right:16px}
+ .detail-wrap{padding:23px 18px 65px}
+ .story-split{padding:25px 20px}
+ .quality-panel{padding:28px 20px 45px}
+}
