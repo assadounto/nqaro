@@ -1,4 +1,3 @@
-import 'server-only';
 import {products as demoProducts,type Product} from '@/lib/catalog';
 const origin=(process.env.XONBAY_API_URL||'https://api.xonbay.com').replace(/\/$/,'');
 const subdomain=process.env.XONBAY_SHOP_SUBDOMAIN?.trim();
