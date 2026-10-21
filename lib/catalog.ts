@@ -1,21 +1,14 @@
 export type Product = { id:string; name:string; price:number; category:'T-Shirts'|'Hoodies'|'Caps'|'Accessories'; color:string; colors:string[]; sizes:string[]; description:string; image:string; gallery:string[]; tag?:string };
 const img=(id:string,w=900)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
-// Enable after uploading /public/campaign from the NQARO campaign assets package.
-const campaignAssetsReady=process.env.NEXT_PUBLIC_NQARO_CAMPAIGN_ASSETS==='local';
-export const editorial=campaignAssetsReady?{
- hero:'/campaign/hero-desktop.webp',
- creator:'/campaign/creator-editorial.webp',
- builder:'/campaign/builders-editorial.webp',
- global:'/campaign/roots-editorial.webp',
- detail:'/campaign/accessories-editorial.webp',
- story:'/campaign/story-editorial.webp'
-}:{
- hero:img('photo-1529139574466-a303027c1d8b',2200),
- creator:img('photo-1534528741775-53994a69daeb',900),
- builder:img('photo-1529139574466-a303027c1d8b',900),
- global:img('photo-1506794778202-cad84cf45f1d',900),
- detail:img('photo-1523381210434-271e8be1f52b',1000),
- story:img('photo-1483985988355-763728e1935b',1400)
+// Original NQARO campaign SVGs served directly from /public/campaign.
+export const editorial={
+ hero:'/campaign/hero-desktop.svg',
+ heroMobile:'/campaign/hero-mobile.svg',
+ creator:'/campaign/creator-editorial.svg',
+ builder:'/campaign/builders-editorial.svg',
+ global:'/campaign/roots-editorial.svg',
+ detail:'/campaign/accessories-editorial.svg',
+ story:'/campaign/story-editorial.svg'
 };
 export const products:Product[]=[
  {id:'signature-tee',name:'Signature Tee',price:200,category:'T-Shirts',color:'Black',colors:['Black','Cream','Charcoal'],sizes:['S','M','L','XL','XXL'],description:'The essential uniform for creators. A relaxed-fit premium cotton tee featuring a minimal NQARO chest identity.',image:'/products/signature-tee.svg',gallery:['/products/signature-tee.svg'],tag:'Bestseller'},
