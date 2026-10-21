@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import type {Metadata} from 'next';
+export const metadata:Metadata={title:'Journal | NQARO',description:'Stories behind NQARO and the Builders Collection.'};
+export default function Journal(){return <main><section className="home-manifesto collection-intro"><div className="home-manifesto-inner"><span className="eyebrow">THE NQARO JOURNAL</span><h1>IDEAS IN<br/>MOTION.</h1><p>Stories from the people who make things happen.</p></div></section><section className="content-section journal-intro"><span className="eyebrow">COMING SOON</span><h2>NEW PERSPECTIVES, IN THE MAKING.</h2><p>Our first stories will arrive with the collection. In the meantime, explore Drop 001.</p><Link href="/collections/builders" className="primary">Discover Drop 001 →</Link></section></main>}
