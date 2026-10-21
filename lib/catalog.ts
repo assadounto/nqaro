@@ -1,6 +1,15 @@
 export type Product = { id:string; name:string; price:number; category:'T-Shirts'|'Hoodies'|'Caps'|'Accessories'; color:string; colors:string[]; sizes:string[]; description:string; image:string; gallery:string[]; tag?:string };
 const img=(id:string,w=900)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
-export const editorial={
+// Enable after uploading /public/campaign from the NQARO campaign assets package.
+const campaignAssetsReady=process.env.NEXT_PUBLIC_NQARO_CAMPAIGN_ASSETS==='local';
+export const editorial=campaignAssetsReady?{
+ hero:'/campaign/hero-desktop.webp',
+ creator:'/campaign/creator-editorial.webp',
+ builder:'/campaign/builders-editorial.webp',
+ global:'/campaign/roots-editorial.webp',
+ detail:'/campaign/accessories-editorial.webp',
+ story:'/campaign/story-editorial.webp'
+}:{
  hero:img('photo-1529139574466-a303027c1d8b',2200),
  creator:img('photo-1534528741775-53994a69daeb',900),
  builder:img('photo-1529139574466-a303027c1d8b',900),
