@@ -186,3 +186,25 @@
 }
 @keyframes nqaro-scroll-in{from{opacity:.45;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.product-card .product-photo img{transition:none}.product-card:hover .product-photo img{transform:none}}
+
+
+/* App Router migration: real navigation links */
+.site-header .nav a{color:#e8e8e8;font-size:12px;font-weight:600;transition:opacity .2s}
+.site-header .nav a:hover{opacity:.7}
+.site-header .header-actions a{color:white;display:inline-flex;padding:3px}
+.footer-links a{display:block;font-size:11px;color:#bbb;margin-bottom:13px}
+.product-photo{display:block}
+.editorial-tile{display:block}
+.category-card{display:block}
+.hero .light-btn,.home-quote-banner .light-btn,.story-split .light-btn{width:max-content}
+.shop-toolbar .shop-search{background:transparent;border:1px solid #d0cbc2;min-height:42px;padding:10px 12px;max-width:220px}
+.collection-intro{min-height:400px}
+.collection-intro h1{font-family:Impact,"Arial Narrow",Arial,sans-serif;font-size:clamp(55px,8vw,112px);line-height:.93;letter-spacing:-.04em;margin:22px 0}
+.product-description{margin-top:80px;padding-top:35px;border-top:1px solid var(--line);max-width:780px}
+.product-description h2{font-size:clamp(24px,3vw,40px)}
+.product-description p{line-height:1.8;color:#565656}
+.journal-intro{padding-top:95px;padding-bottom:120px;min-height:360px}
+.journal-intro h2{font-size:clamp(27px,4vw,50px)}
+.journal-intro p{max-width:600px;line-height:1.7}
+.cart-summary button:disabled{opacity:.65;cursor:not-allowed}
+@media(max-width:640px){.site-header .nav a{display:block;padding:15px 10px;border-bottom:1px solid #333;font-size:14px}.collection-intro{min-height:330px}.shop-toolbar .shop-search{width:100%}}
