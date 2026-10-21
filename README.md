@@ -33,3 +33,7 @@ Set `XONBAY_SHOP_SUBDOMAIN` to the real NQARO shop subdomain in your deployment 
 The original NQARO editorial artwork is exported into `nqaro-campaign-assets.zip` (provided in the project conversation). To install, copy its `public/campaign/` directory into this repository, commit the WebP files, and set `NEXT_PUBLIC_NQARO_CAMPAIGN_ASSETS=local` in the deployment environment. Until then, existing editorial placeholders remain, avoiding missing-image links. Assets cover desktop hero, mobile hero concept, editorial panels and story banner. The current hero consumes `hero-desktop.webp`; mobile-specific art direction can be added with a picture element or responsive CSS once installed.
 
 AI-generated campaign images are visual concepts—not photos of manufactured NQARO merchandise. Verify real garments and garment prints prior to advertising physical inventory. The source board images are smaller than professional standalone photography; replace with real original photo shoots for production-quality large-screen campaigns.
+
+## Active campaign assets
+
+The original NQARO SVG campaign files are now committed under `public/campaign/` and used directly by `lib/catalog.ts` for the hero, collection/editorial, accessories, and story imagery. `hero-mobile.svg` is selected by the mobile CSS breakpoint. No `NEXT_PUBLIC_NQARO_CAMPAIGN_ASSETS` flag is required anymore; remove it from deployment variables if previously set. Some SVG images embed raster WebP photography; vectors remain sharp but those photographic portions do not gain additional resolution.
