@@ -1,7 +1,7 @@
 export type Product = { id:string; name:string; price:number; category:'T-Shirts'|'Hoodies'|'Caps'|'Accessories'; color:string; colors:string[]; sizes:string[]; description:string; image:string; gallery:string[]; tag?:string };
 const img=(id:string,w=900)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
 export const editorial={
- hero:img('photo-1506794778202-cad84cf45f1d',1600),
+ hero:img('photo-1529139574466-a303027c1d8b',2200),
  creator:img('photo-1534528741775-53994a69daeb',900),
  builder:img('photo-1529139574466-a303027c1d8b',900),
  global:img('photo-1506794778202-cad84cf45f1d',900),
