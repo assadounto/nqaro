@@ -1,0 +1,23 @@
+'use client';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import {useEffect,useState,createContext,useContext} from 'react';
+import {Menu,X,ShoppingBag,Search,ArrowRight,Minus,Plus,Trash2} from 'lucide-react';
+import {getProduct,money} from '@/lib/catalog';
+type Line={key:string;id:string;size:string;color:string;quantity:number};
+type Cart={items:Line[];add:(id:string,size:string,color:string)=>void};
+const Context=createContext<Cart>({items:[],add:()=>{}});
+export const useCart=()=>useContext(Context);
+export function StoreShell({children}:{children:React.ReactNode}){
+ const pathname=usePathname();const [items,setItems]=useState<Line[]>([]),[ready,setReady]=useState(false),[open,setOpen]=useState(false),[menu,setMenu]=useState(false),[query,setQuery]=useState('');
+ useEffect(()=>{try{const saved=JSON.parse(localStorage.getItem('nqaro-cart-v1')||'[]');if(Array.isArray(saved))setItems(saved)}catch{}setReady(true)},[]);
+ useEffect(()=>{if(ready)localStorage.setItem('nqaro-cart-v1',JSON.stringify(items))},[items,ready]);
+ useEffect(()=>{setMenu(false)},[pathname]);
+ const add=(id:string,size:string,color:string)=>{const key=[id,size,color].join(':');setItems(old=>{const match=old.find(l=>l.key===key);return match?old.map(l=>l.key===key?{...l,quantity:l.quantity+1}:l):[...old,{key,id,size,color,quantity:1}]});setOpen(true)};
+ const adjust=(key:string,delta:number)=>setItems(old=>old.map(l=>l.key===key?{...l,quantity:Math.max(0,l.quantity+delta)}:l).filter(l=>l.quantity>0));
+ const count=items.reduce((n,l)=>n+l.quantity,0),subtotal=items.reduce((n,l)=>n+(getProduct(l.id)?.price||0)*l.quantity,0);
+ return <Context.Provider value={{items,add}}><header className="site-header"><div className="header-inner"><Link aria-label="NQARO homepage" href="/" className="wordmark">NQARO</Link><nav aria-label="Main" className={menu?'nav open':'nav'}><Link href="/">Home</Link><Link href="/collections/builders">Collections</Link><Link href="/shop">Shop</Link><Link href="/about">Our Story</Link><Link href="/journal">Journal</Link></nav><div className="header-actions"><Link href="/shop" aria-label="Search products"><Search size={20}/></Link><button aria-label="Open shopping bag" className="bag-icon" onClick={()=>setOpen(true)}><ShoppingBag size={20}/>{count>0&&<span className="bag-count">{count}</span>}</button><button className="mobile-icon" aria-label={menu?'Close menu':'Open menu'} aria-expanded={menu} onClick={()=>setMenu(v=>!v)}>{menu?<X size={23}/>:<Menu size={23}/>}</button></div></div></header>
+ {children}
+ <footer><div className="footer-top"><div><Link href="/" className="wordmark">NQARO</Link><span className="footer-tagline">IDEAS WEAR FURTHER.</span><p>Made for the builders, dreamers and creators shaping tomorrow.</p></div><div className="footer-links"><div><h4>SHOP</h4><Link href="/shop">All products</Link><Link href="/collections/builders">Drop 001</Link></div><div><h4>EXPLORE</h4><Link href="/about">Our story</Link><Link href="/journal">Journal</Link></div></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} NQARO.</span><span>IDEAS WEAR FURTHER. • POWERED BY XONBAY</span></div></footer>
+ {open&&<div className="drawer-backdrop" onClick={()=>setOpen(false)}><aside className="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping bag" onClick={e=>e.stopPropagation()}><div className="drawer-heading"><h2>Your bag ({count})</h2><button aria-label="Close bag" onClick={()=>setOpen(false)}><X/></button></div>{count===0?<div className="empty-cart"><ShoppingBag size={42}/><h3>Your bag is empty.</h3><Link className="primary" href="/shop" onClick={()=>setOpen(false)}>Explore collection</Link></div>:<><div className="cart-lines">{items.map(l=>{const p=getProduct(l.id);return p?<div className="cart-line" key={l.key}><img src={p.image} alt={p.name}/><div><Link href={'/products/'+p.id} onClick={()=>setOpen(false)}><strong>{p.name}</strong></Link><p>{l.color} / {l.size}</p><b>{money(p.price*l.quantity)}</b><div className="quantity"><button aria-label="Decrease quantity" onClick={()=>adjust(l.key,-1)}><Minus size={15}/></button>{l.quantity}<button aria-label="Increase quantity" onClick={()=>adjust(l.key,1)}><Plus size={15}/></button><button className="remove" aria-label="Remove product" onClick={()=>setItems(old=>old.filter(x=>x.key!==l.key))}><Trash2 size={15}/></button></div></div></div>:null})}</div><div className="cart-summary"><div><span>Subtotal</span><strong>{money(subtotal)}</strong></div><p>Demo bag only. Payments will be enabled after secure Xonbay integration.</p><button className="primary full" disabled>Checkout coming soon <ArrowRight size={16}/></button></div></>}</aside></div>}</Context.Provider>
+}
