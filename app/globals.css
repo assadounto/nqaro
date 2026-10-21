@@ -75,3 +75,33 @@
  .story-split{padding:25px 20px}
  .quality-panel{padding:28px 20px 45px}
 }
+
+
+/* NQARO editorial hero — full-bleed photographic treatment */
+.hero{position:relative;isolation:isolate;min-height:clamp(650px,59vw,830px);background-color:#0c1113;background-repeat:no-repeat;background-size:cover;background-position:62% 34%;display:flex;align-items:center}
+.hero-content{position:relative;z-index:1;width:min(100%,700px);padding-block:40px}
+.hero-kicker{display:inline-block;margin-bottom:26px;color:#ebe8e1;font-size:11px;line-height:1.4;font-weight:800;letter-spacing:.21em;text-transform:uppercase}
+.hero h1{font-family:Impact,"Arial Narrow","Arial Black",Arial,sans-serif;font-size:clamp(90px,11vw,172px);line-height:.83;letter-spacing:-.055em;margin:0 0 25px;text-transform:uppercase}
+.hero h1 .wordmark{font-weight:900;letter-spacing:-.045em}
+.hero h2{font-size:clamp(21px,2.1vw,31px);line-height:1.15;letter-spacing:.075em;font-weight:900;margin:0}
+.hero .short-line{margin:26px 0 19px}
+.hero p{max-width:450px;line-height:1.65;font-size:clamp(15px,1.45vw,19px);text-wrap:pretty}
+.hero .light-btn{min-height:52px;padding-inline:27px;transition:background .2s,transform .2s}
+.hero .light-btn:hover{transform:translateY(-2px)}
+.hero-values{margin-top:58px;justify-content:flex-start;gap:clamp(24px,4vw,54px)}
+@media(min-width:1600px){.hero{min-height:800px;background-position:center 37%}}
+@media(max-width:900px){.hero{min-height:680px;background-position:62% center}.hero h1{font-size:clamp(78px,12vw,125px)}}
+@media(max-width:640px){
+ .hero{min-height:min(780px,calc(100svh - 62px));min-height:max(650px,min(780px,calc(100svh - 62px)));background-position:63% center;align-items:center;padding:36px 22px}
+ .hero-content{padding:28px 0}
+ .hero-kicker{font-size:9px;letter-spacing:.14em;margin-bottom:23px}
+ .hero h1{font-size:clamp(70px,17vw,110px);margin-bottom:18px}
+ .hero h2{font-size:clamp(16px,5vw,21px);letter-spacing:.025em}
+ .hero .short-line{margin:21px 0 18px}
+ .hero p{font-size:14px;line-height:1.55}
+ .hero-values{margin-top:54px;gap:10px;justify-content:space-between}
+ .hero-values>div{min-width:0;flex:1}
+ .hero-values span{font-size:8px;letter-spacing:0}
+ .hero-values svg{width:22px;height:22px}
+}
+@media(prefers-reduced-motion:reduce){.hero .light-btn{transition:none}.hero .light-btn:hover{transform:none}}
