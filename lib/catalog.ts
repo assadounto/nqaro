@@ -1,14 +1,14 @@
 export type Product = { id:string; name:string; price:number; category:'T-Shirts'|'Hoodies'|'Caps'|'Accessories'; color:string; colors:string[]; sizes:string[]; description:string; image:string; gallery:string[]; tag?:string };
 const img=(id:string,w=900)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
-// Original NQARO campaign SVGs served directly from /public/campaign.
+// Original text-free PNG photography. Product illustrations stay separate.
 export const editorial={
- hero:'/campaign/hero-desktop.svg',
- heroMobile:'/campaign/hero-mobile.svg',
- creator:'/campaign/creator-editorial.svg',
- builder:'/campaign/builders-editorial.svg',
- global:'/campaign/roots-editorial.svg',
- detail:'/campaign/accessories-editorial.svg',
- story:'/campaign/story-editorial.svg'
+ hero:'/campaign/nqaro_underpass_streetwear_trio.png',
+ heroMobile:'/campaign/nqaro_under_concrete_shadows.png',
+ creator:'/campaign/brutalist_nqaro_hoodie_portrait.png',
+ builder:'/campaign/nqaro_streetwear_in_brutalist_sunlight.png',
+ global:'/campaign/brutalist_sunlit_streetwear_portrait.png',
+ detail:'/campaign/nqaro_cap_in_brutalist_light.png',
+ story:'/campaign/brutalist_steps_nqaro_streetwear.png'
 };
 export const products:Product[]=[
  {id:'signature-tee',name:'Signature Tee',price:200,category:'T-Shirts',color:'Black',colors:['Black','Cream','Charcoal'],sizes:['S','M','L','XL','XXL'],description:'The essential uniform for creators. A relaxed-fit premium cotton tee featuring a minimal NQARO chest identity.',image:'/products/signature-tee.svg',gallery:['/products/signature-tee.svg'],tag:'Bestseller'},
